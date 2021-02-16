@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %} 
+ <section class="content-header">
+      <h1>
+        Brand Group Administration
+      </h1>
+      <p><a class="btn btn-danger" href="/brandgroup">New Brand Group</a></p>
+    </section>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <div class="table-responsive">
+              <table id="example" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Brand</th>
+                  <th>Crops</th>
+                  <th>Epa</th>
+                  <th>Active Ingredient</th>
+                  <th>REI</th>
+                  <th>PHI</th>
+                  <th>Rate</th>
+                  <th>Treatments</th>
+                  <th>Units</th>
+                  <th>Type</th>
+                  <th>Action</th>
+                  <th>Delete?</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for group in groups %}
+                {% if group.brand.rup_omri == 'RUP' %}
+         			  <tr class="warning">
+                {% elif group.brand.rup_omri == 'OMRI' %}
+                <tr class="success">
+                {% else %}
+                <tr>
+         				{% endif %}
+         				<td>{{ group.brand }}</td>
+                <td>{% for crop in group.crops.all %} {{ crop }}, {% endfor %}</td>
+                <td> {{ group.brand.epa_number }} </td>
+                <td>{{ group.brand.active_ingredient }}</td>
+                <td>{{ group.rei }} {{ group.rei_time }}</td>
+                <td> {{ group.phi }} {{ group.phi_time }} </td>
+                <td> {{ group.rate }}</td>
+                <td>{% for pest in group.brand.pests.all %} {{ pest }}, {% endfor %}</td>
+                <td>{% for unit in units %}{% if unit.brand == group.brand %}{{ unit.value }}</br> {% endif %}{% endfor %}</td>
+                <td>{{ group.brand.rup_omri }}</td>
+         				<td><a href="/brandgroup/{{ group.id }}">Edit</a></td>
+                <td><a href="/delete_brandgroup/{{ group.id }}">Delete</a></td>
+         			</tr>
+         			{% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+          </div>
+          </div>
+          
+
+{% endblock %}

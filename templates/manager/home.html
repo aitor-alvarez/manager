@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<h3 class="box-title">Lots</h3>
+    Filter by crop:
+    <select id="filter_crop">
+        <option value="all">All</option>
+    </select>
+    <hr>
+{% for lot in lots %}
+{% if lot.0.lot %}
+{% if forloop.first %}<div class="row">{% endif %}
+<div class="col-md-4" data-crop="{{lot.0.lot_crop}}">
+      <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title"><a href="/advanced_history?lot={{lot.0.lot}}&crop=+">{{lot.0.lot}}</a> {{lot.0.lot_rotation}} | {{lot.0.lot_crop}} </h3>
+              {% if lot.0.rei == 1 %}
+              <h4 style="color:red;" >DO NOT ENTER ({{ lot.0.date_rei }})</h4>
+              {% endif %}
+              {% if lot.0.phi == 1 %}
+              <h4 style="color:ORANGE;" >DO NOT HARVEST ({{ lot.0.date_phi }})</h4>
+              {% endif %}
+              <div class="box-tools">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+              </div>
+             
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover">
+                {% for l in lot %}
+                {% if l.rei == 1 or l.phi == 1 %}
+                     {% if l.method_rei == 1 %}
+                        <tr style="color:red;">
+                            {% elif  l.method_phi == 1 %}
+                            <tr style="color:orange;">
+                        {% else %}
+                            <tr>
+                         {% endif %}
+                {% endif %}
+                         <td>{{ l.name }} </td>
+                         <td>{{ l.info }}</td>
+                         <td>{{ l.created }}</td> 
+                        </tr>
+                {% endfor %}
+                </table>
+                </div>
+              
+            </div>
+            <!-- /.box-body -->
+            
+          </div>
+         
+</div>
+
+{% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+            {% if forloop.last %}</div>{% endif %}
+{% endif %}
+{% endfor %}
+
+{% endblock %}
+{% block javascript %}
+    <script type="text/javascript">
+    function GetUnique(inputArray)
+{
+    var outputArray = [];
+
+    for (var i = 0; i < inputArray.length; i++)
+    {
+        if ((jQuery.inArray(inputArray[i], outputArray)) == -1)
+        {
+            outputArray.push(inputArray[i]);
+        }
+    }
+
+    return outputArray;
+}
+
+    $(document).ready(function() {
+
+        var crops=$(".col-md-4").map( function( i, element ) {
+                return $(element).data('crop');
+
+});
+       var allCrops = GetUnique(crops);
+
+        $.each(allCrops, function (ind, ele) {
+
+            $('#filter_crop').append($('<option></option>').val(ele).html(ele));
+
+        })
+        $('#filter_crop').on('change', function () {
+        var elems = this.value == 'all' ? $('.col-md-4') : $('.col-md-4[data-crop="'+this.value+'"]');
+        $('.col-md-4').not(elems.show()).hide();
+    });
+    })
+
+    </script>
+{% endblock %}

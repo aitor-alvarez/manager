@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+ {% load manager_tags %}
+{% load staticfiles %}
+
+{% block content %} 
+
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <section class="content-header">
+                <h1>RUP History</h1>
+              </section>
+
+              <div class="table-responsive">
+              <table id="example" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Created</th>
+                  <th>Lot</th>
+                    <th>Acres</th>
+                  <th>Rotation</th>
+                  <th>Crop</th>
+                  <th>User</th>
+                  <th>Activity Type</th>
+                  <th>Action</th>
+                  <th>Brand</th>
+                  <th>Qty.</th>
+                  <th>Unit</th>
+                  <th>People</th>
+                  <th>EPA #</th>
+                  <th>Active Ingr.</th>
+                  <th>Pests</th>
+                  <th>REI</th>
+                    <th>Tax Code</th>
+                    <th>County</th>
+                  <th>Notes</th>
+                </tr>
+                </thead>
+                <tbody>
+
+              {% for obj in histories %}
+
+              <tr>
+                {% with met=obj|check_class_name %}
+
+                {% if met == 'Method' %}
+
+                <td>{{ obj.created|date:"m/d/y G:i" }}</td>
+                <td>{{ obj.lot_info }}</td>
+                    <td>{{ obj.lot_info.lot.acres }}</td>
+                <td> {{ obj.lot_info.rotation}} </td>
+                <td> {{ obj.lot_info.crop }} </td>
+                <td>{{ obj.created_by }}</td>
+                <td>Input Method</td>
+                <td> {{ obj.method_name }} </td>
+                <td> {{ obj.brand }}</td>
+                <td> {{ obj.quantity }} </td>
+                <td>{{ obj.get_unit_display }}</td>
+                <td>{{ obj.people }}</td>
+                <td>{{ obj.brand.epa_number }}</td>
+                <td>{{ obj.brand.active_ingredient }}</td>
+                <td>{% for pest in obj.brand.pests.all %}{{ pest }}<br>{% endfor %}</td>
+                    <td>{% set continue = '1' %}{% for brand in brandgroup %}{% if brand.brand == obj.brand %} {% if continue == '1' %}{{ brand.rei }} {{ brand.rei_time }} {% set continue = '0' %}{% endif %}{% endif %}{% endfor %}</td>
+
+                <td>{{ obj.lot_info.lot.tax_code }}</td>
+                    <td>{{ obj.lot_info.lot.county }}</td>
+                    <td {% if 'notes' in fields %} hidden{% endif %}> {{ obj.Notes }} </td>
+
+
+                {% endif %}
+                {% endwith %}
+              </tr>
+              {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+          </div>
+          </div>
+  {% if histories.has_other_pages %}
+  <ul class="pagination">
+    {% if histories.has_previous %}
+      <li><a href="?page={{ histories.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in histories.paginator.page_range %}
+      {% if histories.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if histories.has_next %}
+      <li><a href="?page={{ histories.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+{% endblock %}

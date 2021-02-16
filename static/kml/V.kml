@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>V</name>
+      <Placemark>
+        <name>V</name>
+        <address>0</address>
+        <description>1.7ac</description>
+        <styleUrl>#Polygon127</styleUrl>
+        <Style id="Polygon127">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-157.951749293142,21.6577666701213,0 -157.951200194665,21.6571802721756,0 -157.951538069182,21.6571036615807,0 -157.951775947594,21.6570856404887,0 -157.952145254248,21.6570105386363,0 -157.952370056891,21.6569585708367,0 -157.952590920039,21.6568688844727,0 -157.952700136238,21.6569540446089,0 -157.952689994135,21.6570027434665,0 -157.952243993067,21.6574218386249,0 -157.951907375836,21.6576591303036,0 -157.951749293142,21.6577666701213,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

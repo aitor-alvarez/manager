@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>F</name>
+      <Placemark>
+        <name>F</name>
+        <address>0</address>
+        <description>0.8ac</description>
+        <styleUrl>#Polygon105</styleUrl>
+        <Style id="Polygon105">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-157.947128762201,21.6716617028672,0 -157.946917762731,21.671284047546,0 -157.947535687006,21.6710154620447,0 -157.947636691638,21.6711975863939,0 -157.947622862836,21.6712934562069,0 -157.947590048135,21.671346767611,0 -157.947539337742,21.6714078883259,0 -157.947475423031,21.6714931830675,0 -157.947415280086,21.6715727386569,0 -157.947231860027,21.6716560323744,0 -157.947128762201,21.6716617028672,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

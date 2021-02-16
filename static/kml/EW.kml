@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>EW</name>
+      <Placemark>
+        <name>EW</name>
+        <address>0</address>
+        <description>2.9ac</description>
+        <styleUrl>#Polygon50</styleUrl>
+        <Style id="Polygon50">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-158.036085572096,21.3645931794676,0 -158.035838641229,21.3645849652024,0 -158.034647572788,21.3644760842803,0 -158.034512959423,21.3644002280566,0 -158.034332748505,21.3642298239651,0 -158.03424918093,21.3636896941248,0 -158.034282624724,21.3636316913548,0 -158.034509858119,21.363505543712,0 -158.034577164801,21.3638862497542,0 -158.035232042896,21.3639501198563,0 -158.035674872569,21.3639959665624,0 -158.035783823582,21.3640081226263,0 -158.035903798961,21.3640777309899,0 -158.036015247928,21.3641962963524,0 -158.036085572096,21.3645931794676,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

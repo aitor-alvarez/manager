@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+ <script>
+            var csrftoken = "{{ csrf_token }}";
+</script>
+<script>date="{{ date }}" </script>
+ <section class="content-header">
+      <h1>
+        Recurring Orders
+      </h1>
+      
+    </section>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              {% autoescape off %} {{ context }} {% endautoescape %}
+          </div>
+          </div>
+          </div>
+          </div> 
+{% endblock %}
+{% block javascript %} 
+
+<script type="text/javascript">
+          $(".deleterecurringorderbutton").on("click", function() { 
+                alert("Are you sure that you want to delete this recurring order?");
+                $.post({
+                    url:"/orders/delete_recurring_order",
+                    data: {
+                        csrfmiddlewaretoken:csrftoken,
+                        id: $(this).closest("tr").attr("id")
+                    },
+                    success: function(){ alert("order deleted!"); window.location.reload(true); }
+                });
+            });
+</script>
+{% endblock %}

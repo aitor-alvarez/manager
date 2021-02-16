@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>EZ</name>
+      <Placemark>
+        <name>EZ</name>
+        <address>0</address>
+        <description>3.8ac</description>
+        <styleUrl>#Polygon54</styleUrl>
+        <Style id="Polygon54">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-158.036124296489,21.3658831543656,0 -158.036127397793,21.3659898559931,0 -158.036097558218,21.3660276583763,0 -158.036067718642,21.366304345,0 -158.036053050312,21.3664034190955,0 -158.036029664802,21.3664877410414,0 -158.035980379211,21.3665433968785,0 -158.03585758433,21.3666200912925,0 -158.035779020838,21.3666410673829,0 -158.035471597689,21.3666936844024,0 -158.035104721787,21.3666948578688,0 -158.034832058477,21.3666488412204,0 -158.034716239356,21.3666432551123,0 -158.034549420702,21.3666313230428,0 -158.034403743225,21.3666501823249,0 -158.034132421019,21.3666132181319,0 -158.03401809186,21.3665839652899,0 -158.033963358032,21.3665501862201,0 -158.033940894532,21.3664424787643,0 -158.033966543155,21.3663019980672,0 -158.03400157951,21.3661346952799,0 -158.036124296489,21.3658831543656,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

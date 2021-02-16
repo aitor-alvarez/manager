@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>EU</name>
+      <Placemark>
+        <name>EU</name>
+        <address>0</address>
+        <description>1.4ac</description>
+        <styleUrl>#Polygon48</styleUrl>
+        <Style id="Polygon48">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-158.034957451748,21.3631294477168,0 -158.034449759873,21.3631676691952,0 -158.034095037731,21.3625719673368,0 -158.034038124608,21.3622479229602,0 -158.034075256439,21.3621996431979,0 -158.034255551177,21.362146837208,0 -158.034930042925,21.3629165473762,0 -158.034957451748,21.3631294477168,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

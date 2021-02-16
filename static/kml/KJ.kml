@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>KJ</name>
+      <Placemark>
+        <name>KJ</name>
+        <address>0</address>
+        <description>0.2ac</description>
+        <styleUrl>#Polygon89</styleUrl>
+        <Style id="Polygon89">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-157.948323000002,21.6718122995673,0 -157.948319900002,21.6717864995674,0 -157.948349800002,21.6717419995673,0 -157.948362300002,21.6717173995673,0 -157.948375900002,21.6716874995674,0 -157.948399000002,21.6716686995673,0 -157.948458200002,21.6716717995674,0 -157.948514000002,21.6716869995674,0 -157.948540600002,21.6717127995674,0 -157.948582400002,21.6717334995673,0 -157.948633700002,21.6717383995673,0 -157.948688200002,21.6717355995674,0 -157.948741700002,21.6717353995674,0 -157.948775200002,21.6717416995674,0 -157.948746300002,21.6717738995674,0 -157.948706300002,21.6717970995674,0 -157.948667400002,21.6718107995674,0 -157.948586900002,21.6718486995674,0 -157.948227700002,21.6719874995674,0 -157.948247500002,21.6719215995674,0 -157.948284800002,21.6718792995673,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

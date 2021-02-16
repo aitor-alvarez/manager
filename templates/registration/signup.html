@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+
+		<form method="post" action=".">
+			{% csrf_token %}
+			{{ form }}
+			<p  class="text-center"><button class="btn btn-lg" type="submit">Create</button></p>
+			<input type="hidden" name="next" value="{{ next }}" />
+		</form>
+
+	
+
+
+{% endblock %}

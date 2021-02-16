@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+ 
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3>Update Brand</h3>
+              {% if formset_errors %}
+              <div class="alert alert-danger alert-dismissible">
+               {{ formset_errors}}
+              </div>
+                {% endif %}
+              
+              {% if brand_form.errors %}
+              <div class="alert alert-danger alert-dismissible">
+               {{ brand_form.errors }}
+                    
+              </div>
+                {% endif %}
+              <form role="form" method="POST" action='./'>{% csrf_token %}
+    
+                <div class="box-body">
+                <div class="form-group">
+                   {% for field in brand_form %}
+                   {% if field.name == 'pests' %}
+                   <label for="{{ field.name }}">{{ field.label }}</label>
+                   {% for radio in field%}
+                      <div class="checkbox">
+                          {{ radio }}
+                      </div>
+                   {% endfor %}
+                   {% elif field.name == 'rup_omri' %}
+                   <label for="{{ field.name }}">{{ field.label }}</label>
+                    {% for radio in field%}
+                      <div class="checkbox">
+                          {{ radio }}
+                      </div>
+                   {% endfor %}
+
+                   {% else %}
+                  <label for="{{ field.name }}">{{ field.label }}</label>
+                </br>
+                
+                  {{ field }}
+                  </br>
+                  {% endif %}
+                  {% endfor %}
+                </div>
+                <hr>
+                  <div class="form-group">
+                    <h4>Units</h4>
+                    {{ formset.management_form }}
+                    {% for f in formset %}
+                    <div class="control">
+                    {{ f.id }}
+                    {{ f.unit}}
+                    {{ f.value }}
+                    {% if formset.can_delete %}
+                    {{ f.DELETE}}
+                    {% endif %}                    
+                    </div>
+                    {% endfor %}
+                  </div>
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="/crops" class="btn btn-warning">Cancel</a>
+              </div>
+            </form>
+          </div>
+          </div>
+          </div>
+          </div>
+          
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{% static 'django-dynamic-formset/src/jquery.formset.js' %}"></script>
+<script>
+    $('.control').formset({
+        addText: 'Add Units'
+    });
+</script>   
+
+{% endblock %}
+

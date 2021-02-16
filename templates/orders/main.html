@@ -1,0 +1,110 @@
+{% extends 'base.html'%}
+{% load staticfiles %}
+{% block content%}
+        <div class="row">
+        <div class="noprint">
+        <div class="col-md-8"><div id="datepicker"></div></div>
+        <div class="col-md-12">
+        <div id = "addorderbutton" class="btn icon-btn btn-success" href="#">
+        <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+        Add Order
+        </div>
+            <div id = "addorderbutton" class="btn icon-btn btn-flat" href="#">
+        <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+                <a href="/orders/trace_orders/{{ date }}">Traceability</a>
+        </div>
+    
+        <div id="addorderdialog" class="dialog" title="Add Order">
+            <form id="addorderform" method="post">
+                <input placeholder="Customer" id="id_customer" name="customer" required/>
+                <br>
+                <div id="deleteitembutton" class="btn btn-xs text-success icon-btn btn-danger deleteitembutton hidden" href="#">
+                <span class="glyphicon btn-glyphicon glyphicon-remove img-circle text-danger"></span>
+                </div>
+                <input placeholder="Product" id="id_product" name="product" required/>
+                <input placeholder="Quantity" id="id_quantity" name="quantity" type="number" step="1" required/>
+                <input placeholder="Size" id="id_size" name="size" type="number" />
+                <input placeholder="Special Price" id="id_special_unit_price" name="price" step ="0.01" type="number" />
+                <br>
+                <button id="additembutton" type="button">Add Item</button>
+                <input id="addordersubmit" type="submit" value="Submit" />
+                <br>
+                <label for="id_recurring">Recurring:</label><input id="id_recurring" name="recurring" value="true" type="checkbox" />
+                <input placeholder="Freq(every x weeks)" id="id_frequency" name="frequency" type="number" style="display:none" min="1" value="1" />
+                <div id="recurring_days" style="display:none">
+                    <input type="checkbox" name="recurring_days" value="6"><label>Sunday</label>
+                    <input type="checkbox" name="recurring_days" value="0"><label>Monday</label>
+                    <input type="checkbox" name="recurring_days" value="1"><label>Tuesday</label>
+                    <input type="checkbox" name="recurring_days" value="2"><label>Wednesday</label>
+                    <input type="checkbox" name="recurring_days" value="3"><label>Thursday</label>
+                    <input type="checkbox" name="recurring_days" value="4"><label>Friday</label>
+                    <input type="checkbox" name="recurring_days" value="5"><label>Saturday</label>
+                </div>
+                <br><br><br>
+                <input placeholder="Pallette" id="addorderform_pallette" name="pallette" />
+
+                <textarea cols="20" placeholder="Note" id="addorderform_note" name="note" rows="2"></textarea>
+                <input placeholder="Purchase Order" id="addorderform_PO" name="PO" type="text" />
+            </form>
+        </div>
+        <br><br><br>
+        <div id="changeorderdialog" class="dialog" title="">
+            <form id="changeorderform" action="/change_order" method="post">
+            <input id="id" type="hidden" name="id">
+            <label for="id_quantity">Quantity:</label><input id="id_quantity" name="quantity" type="number" value="1" required/>
+            <label for="id_size">Size:</label><input id="id_size" name="size" type="number">
+            <label for="id_special_unit_price">Special unit price:</label><input id="id_special_unit_price" name="special_unit_price" step="0.01" type="number">
+            <p id="changeorderform_warning" class="text-danger">Warning: This is a recurring order. Changing or deleting it will only affect today's instance of it. To delete the recurring order completely, please go to the recurring order screen.</p>
+            <p id="changeorder_warning" class="text-danger">Warning: You Cannot delete orders with today's date or older. </p>
+            <input type="submit" value="Submit" />
+            <div id = "deleteorderbutton" class="btn icon-btn btn-danger" href="#">
+                <span class="glyphicon btn-glyphicon glyphicon-remove img-circle"></span>
+                Delete Order
+            </div>
+            
+            </form>
+        </div>
+        <div id="changepallettedialog" class="dialog" title="">
+            <form id="changepalletteform" action="/change_pallette" method="post">
+                <label for "id_pallette">Pallette:</label><input id="id_pallette" name="pallette" />
+                <input type="hidden" class="date" name="date"> 
+                <input id="customer" type="hidden" name="customer">
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+        <div id="changenotedialog" class="dialog" title="">
+            <form id="changenoteform" action="/change_note" method="post"> 
+                <label for="id_note">Note:</label><textarea cols="20" id="id_note" name="note" rows="2"></textarea>
+                <input type="hidden" class="date" name="date"> 
+                <input id="customer" type="hidden" name="customer">
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+        <div id="changePOdialog" class="dialog" title="Change PO">
+            <form id="changePOform" action="/change_po" method="post">
+                <label for="id_PO">Po:</label><input id="id_PO" name="PO" type="text" />
+                <input type="hidden" class="date" name="date"> 
+                <input id="customer" type="hidden" name="customer">
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+
+        <div id="container">
+            
+                 {% include "orders/table.html" %} 
+    
+        </div>
+        </div>
+        </div>
+{% endblock %}
+{% block javascript%}
+        <script>
+            var allproducts = {{ allproductsjson|safe }};
+            var allcustomers = {{ allcustomersjson|safe }};
+            var csrftoken = "{{ csrf_token }}";
+            var theproducts = {{ productsjson|safe }};
+        </script>       
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script>date="{{ date }}" </script>
+        <script src="{% static 'orders/main.js' %}"></script>
+{% endblock %}

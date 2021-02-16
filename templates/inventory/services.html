@@ -1,0 +1,32 @@
+
+{% block content %}
+                    <div class="row-centered">
+                         <h3>Services</h3><a class="btn btn-primary" href="/items/new_service/{{ item.id }}">New service</a>
+<table id="servicetable" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>service_date </th>
+                    <th>service type</th>
+                    <th> mileage </th>
+                    <th> notes </th>
+                    <th> action </th>
+
+                </tr>
+                </thead>
+                <tbody>
+                	{% for service in services %}
+                        <td>{{ service.service_date }}</td>
+                        <td>{{ service.service_type }}</td>
+                        <td>{{ service.mileage }}</td>
+                        <td>{{ service.notes }}</td>
+         				<td><a href="/items/edit_service/{{ service.id }}">Edit</a></td>
+
+         			</tr>
+         			{% endfor %}
+                </tbody>
+              </table>
+
+                    </div>
+
+{% endblock %}
+

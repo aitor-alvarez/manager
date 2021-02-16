@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>EQ</name>
+      <Placemark>
+        <name>EQ</name>
+        <address>0</address>
+        <description>1.9ac</description>
+        <styleUrl>#Polygon43</styleUrl>
+        <Style id="Polygon43">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-158.035563796816,21.3609798588814,0 -158.034730031753,21.361110313762,0 -158.034439785408,21.3607636555467,0 -158.034350195821,21.3605119028744,0 -158.034635618734,21.3604516223943,0 -158.035479817737,21.3603136548971,0 -158.035563796816,21.3609798588814,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

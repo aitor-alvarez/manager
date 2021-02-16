@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+ <section class="content-header">
+      <h1>
+        History
+      </h1>
+      
+    </section>
+    <section class="content-header">
+                <form action="/orders/history/" method="GET">
+                      <label for="customer">Customer: </label>
+                      <input id="customer" type="text" name="customer" required>
+                      <input class="btn btn-info" type="submit" value="Search">
+              </form>
+              </section>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Time Created</th>
+                  <th>User</th>
+                  <th>Customer</th>
+                  <th>Order</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                	{% for order in orders %}
+         			<tr>  
+         				<td>{{ order.created_time }}</td>
+                <td>{{ order.created_user }}</td>
+                <td>{{ order.customer }}</td>
+                <td>{{ order.product }}</td>
+         			</tr>
+         			{% endfor %}
+                </tbody>
+              </table>
+          </div>
+          </div>
+          </div>
+          </div> 
+{% endblock %}

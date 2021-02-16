@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <section class="content-header">
+      <h1>
+        Cleaning
+      </h1>
+    </section>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <form role="form" action="" method="post">{% csrf_token %}
+              {% if form.errors %}
+              <div class="alert alert-danger alert-dismissible">
+               {{ form.errors }}
+                    
+              </div>
+                {% endif %}
+              <div class="box-body">
+                <div class="form-group">
+                   {% for field in form %}
+                   {% if field.name != 'crop' %}
+                   {% if field.name != 'rotation' %}
+                  <label for="{{ field.name }}">{{ field.label }}</label>
+                </br>
+                  <!--<input type="text" class="form-control" id="{{ field.auto_id }}" name ="{{ field.name }}" >-->
+                  {{ field }}</br>
+                  {% endif %}
+                  {% endif %}
+                  {% endfor %}
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+          </div>
+          </div>
+          </div>
+          
+
+{% endblock %}
+

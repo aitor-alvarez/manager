@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+{% load staticfiles %}
+{% block content%}
+
+<section class="content-header">
+      <h1>
+        Calendar of Orders
+      </h1>
+    </section>
+ <div id = "addorderbutton" class="btn icon-btn btn-success" href="#">
+        <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-success"></span>
+        Add Order
+        </div>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+<div id="calendar" ></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+ <div class="box">
+        {% include "orders/table.html" %} 
+ </div>
+
+{% endblock %}
+{% block javascript%}
+<script>
+            var allproducts = {{ allproductsjson|safe }};
+            var allcustomers = {{ allcustomersjson|safe }};
+            var csrftoken = "{{ csrf_token }}";
+            var theproducts = {{ productsjson|safe }};
+
+
+</script>
+i.min.js"></script>
+<script src="{% static 'orders/main.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+ <section class="content-header">
+      <h1>
+       Traceability
+      </h1>
+      
+    </section>
+    <section>
+    <select id = "catselect" multiple class="form-group">
+
+            <option value="{{category}}" selected>{{category}}</option>
+
+    </select>
+    </section>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+                <div id="selected" class="btn icon-btn btn-info" href="#">
+                             Labels for selected orders
+                        </div>
+
+              </div>
+            <div class="box-header">
+            <div class="table-responsive">
+              <table id="labels_table" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Time Created</th>
+                  <th>Customer</th>
+                  <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Size</th>
+                    <th>Crop</th>
+                    <th>Class</th>
+                    <th>Lots</th>
+                    <th>Ids</th>
+                    <!--<th>Action</th>-->
+                </tr>
+                </thead>
+                <tbody>
+                	{% for order in orders %}
+
+         			<tr class="orders_data">
+                        <td>{{ date }}</td>
+                        <td>{{ order.customer }}</td>
+                        <td>{{ order.product }}</td>
+                        <td>{{ order.quantity }}</td>
+                        <td>{{ order.size }}</td>
+                        <td>{{ order.product.crop.name }}</td>
+                        <td>{{ order.product.category }}</td>
+                        <td>{%  for lot in order.lots %} {{ lot }}, {% endfor %}</td>
+                        <td>{{ order.id }}</td>
+                        <!--<td><div class="btn icon-btn btn-info" href="#" data-pk="{{ order.id }}">
+                             Print order
+                        </div></td>-->
+         			</tr>
+         			{% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+          </div>
+          </div> 
+{% endblock %}
+{% block javascript %}
+
+<script type="text/javascript">
+
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+</script>
+    <script>
+
+$(document).ready(function() {
+    var table = $('#labels_table').DataTable({"pageLength": 100, "order": [[ 2, "asc" ]]});
+    var output =[];
+    var date_str = Date.now();
+    var selectables = table.column(6).data().order( [ 2, 'asc' ] );
+    var filter_data =[];
+    $.each(selectables, function (index, cat){
+        if (filter_data.includes(cat)){}
+        else {
+            filter_data.push(cat);
+            $('#catselect').append('<option value="'+cat+'">'+cat+'</option>');
+        }
+    });
+
+    $('#catselect').on('change', function(){
+        table.rows('.selected').deselect();
+            table
+        .order( [ 2, 'asc' ] )
+        .columns( 6 )
+        .search( this.value )
+        .draw();
+        table.rows({ search: 'applied'}).nodes().each(function() {
+       $(this).addClass('selected');
+     })
+    });
+
+
+    $('#labels_table tbody').on( 'click', 'tr', function () {
+        $(this).toggleClass('selected');
+    } );
+
+    $('#selected').click( function () {
+        var rows = table.rows('.selected').data();
+        $.each(rows, function (index, value) {
+            output.push(parseInt(value[8]));
+        })
+        var date = rows[0][0];
+    } );
+
+
+   $('#labelbutton').click(function () {
+
+
+$.ajax({
+        url: '/orders/trace_orders/'+{{ date }},
+
+        dataType: 'json',
+        success: function( response ) {var labels = response['labels']; ;download('labels_'+date_str+'.txt', labels);},
+
+      });
+});
+
+    $('.btn-info').click(function () {
+
+$.ajax({
+        url: '/orders/get_orders/',
+        data:{'orders': output, 'date': table.rows('.selected').data()[0][0] },
+        dataType: 'json',
+        success: function( response ) { var labels2 = response['labels'];download('labels_'+date_str+'.txt', labels2);},
+
+      });
+        output=[];
+    });
+});
+
+    </script>
+
+{% endblock %}

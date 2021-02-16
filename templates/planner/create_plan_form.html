@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+ 
+<div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header">
+              <h3>Create Plan</h3>
+              <form role="form" action="" method="post">{% csrf_token %}
+                {% if form.errors %}
+              <div class="alert alert-danger alert-dismissible">
+               {{ form.errors }}
+                    
+              </div>
+                {% endif %}
+          
+              </div>
+              </div>
+              </div>
+              <div class="col-md-12">
+                <div class="box box-info">
+                <div class="box-body">
+                  {% for field in form %}
+                  {% if field.name != 'start_date' %}
+                  <label for="{{ field.name }}">{{ field.label }}:</label> 
+                  {{ field }}
+                  {% endif %}
+                  {% endfor %}
+
+                  <label for="id_start_date">Start date:</label></br>
+                  <input class="form-control" id="id_start_date" name="start_date" type="date" required />
+                </div>
+                </div>
+              
+
+               
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="/planner/calendar" class="btn btn-warning">Cancel</a>
+              </div>
+            </form>
+            </div>
+          </div> 
+
+{% endblock %}
+
+
+

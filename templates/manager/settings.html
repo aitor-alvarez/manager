@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+ <section class="content-header">
+      <h1>
+        History Settings
+      </h1>
+    </section>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <table id="data" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Hidden</th>
+                  <th>Modify</th>
+                </tr>
+                </thead>
+                <tbody>
+                	{% for o in object_list %}
+         			<tr>  
+         				<td>{{ o.field_name }}</td>
+                <td>{% if o.field_view == 0 %}Yes{% else %}No{% endif %}</td>
+         				<td><a href="/settings/{{ o.pk }}">Change</a></td>
+         			</tr>
+         			{% endfor %}
+                </tbody>
+              </table>
+          </div>
+          </div>
+          </div>
+          </div>
+          
+
+{% endblock %}

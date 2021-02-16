@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+            <h3>New Service for {{ vehicle }} <a class="btn btn-info" href="/items/">Return to items</a></h3>
+              <form role="form" action="" method="post">{% csrf_token %}
+              {% if form.errors %}
+              <div class="alert alert-danger alert-dismissible">
+               {{ form.errors }}
+
+              </div>
+                {% endif %}
+              <div class="box-body">
+                <div class="form-group">
+                   {{ form.as_p }}
+                </div>
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+          </div>
+          </div>
+          </div>
+
+
+{% endblock %}
+
+{% block javascript %}
+
+<script type="text/javascript">
+
+function hide_all(){
+       $('#T_NO').hide();
+       $('label[for=license]').hide();
+}
+function show_all(){
+       $('#T_NO').show();
+       $('label[for=license]').show();
+}
+
+$("#id_category").change(function() {
+
+  if ($(this).val() == "V") {
+      show_all();
+
+  } else if ($(this).val() == "T"){
+ hide_all();
+
+  }
+});
+
+</script>
+
+{% endblock %}

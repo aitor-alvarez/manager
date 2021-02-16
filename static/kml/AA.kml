@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>AA</name>
+      <Placemark>
+        <name>AA</name>
+        <address>0</address>
+        <description>0.8ac</description>
+        <styleUrl>#Polygon78</styleUrl>
+        <Style id="Polygon78">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-158.035080330449,21.3672093390855,0 -158.034692835065,21.3671905636224,0 -158.034431990238,21.3671742189112,0 -158.034420087936,21.3671449660691,0 -158.034444982188,21.3669684431883,0 -158.03446736187,21.3669347479375,0 -158.034481359648,21.3667723904732,0 -158.034486137333,21.3667147229793,0 -158.035032134505,21.3667761623296,0 -158.035115785899,21.366867357436,0 -158.035080330449,21.3672093390855,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+         
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

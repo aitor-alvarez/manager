@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load app_tags %}
+
+{% block content %}
+ <section class="content-header">
+      <h1>
+        Item Search
+      </h1>
+    </section>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+            <div class="table-responsive">
+              <table id="tablesearch" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>View</th>
+                    <th>Category</th>
+                    <th>Type</th>
+                    <th>Code</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                    <th>Notes</th>
+                    <th>License</th>
+                    <th>Plate</th>
+                     <th>Make</th>
+                    <th>Model</th>
+                    <th> Vin/Serial</th>
+                    <th>Year</th>
+                    <th>Insurance expires</th>
+                    <th>Insurance</th>
+                    <th>Safety expires</th>
+                    <th>Registration expires</th>
+                    <th>Registration amount</th>
+                    <th>Tire front</th>
+                    <th>Tire back</th>
+                    <th>Tare</th>
+                    <th>Next check in models</th>
+                </tr>
+                </thead>
+                <tbody>
+                	{% for item in item_list %}
+         			<tr>
+                        <td><a href="/items/view/{{ item.id }}">Details</a></td>
+                        <td>{{ item.get_category_display }}</td>
+         				<td>{{ item.type }}</td>
+                        <td>{{ item.code }}</td>
+                        <td>{{ item.description }}</td>
+         				<td>{{ item.location }}</td>
+                        <td>{{ item.notes }}</td>
+                        <td>{{ item.license }}</td>
+                        <td>{{ item.plate }}</td>
+                        <td>{{ item.make }}</td>
+                        <td>{{ item.model }}</td>
+                        <td>{{ item.vin_serial }}</td>
+                        <td>{{ item.year }}</td>
+                        <td>{{ item.insurance_expires }}</td>
+                        <td>{{ item.insurance }}</td>
+                        <td>{{ item.safety_expires }}</td>
+                        <td>{{ item.registration_expires }}</td>
+                        <td>{{ item.registration_amount }}</td>
+                        <td>{{ item.tire_front }}</td>
+                        <td>{{ item.tire_back }}</td>
+                        <td>{{ item.tare }}</td>
+                        <td>{{ item.next_check_in_days }}</td>
+         			</tr>
+         			{% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+          </div>
+          </div>
+          
+
+{% endblock %}
+{% block javascript %}
+    <script>
+
+
+$(document).ready(function() {
+
+    var table =$('#tablesearch').DataTable( {
+            //"order": [[ 0, "desc"]],
+            "paging":   false,
+
+
+         } );
+    // Apply the search
+    table.columns().every( function () {
+        var that = this;
+
+        $( 'input', this.header() ).on( 'keyup change', function () {
+
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+    });
+    </script>
+
+{% endblock %}

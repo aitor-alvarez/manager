@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>T</name>
+      <Placemark>
+        <name>T</name>
+        <address>0</address>
+        <description>1.2ac</description>
+        <styleUrl>#Polygon125</styleUrl>
+        <Style id="Polygon125">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-157.951326258489,21.6586043575242,0 -157.950528468945,21.6577038896666,0 -157.95061455109,21.6575313900994,0 -157.950766682633,21.657427286862,0 -157.951413272955,21.6581352688795,0 -157.951370431118,21.6583333705949,0 -157.951326258489,21.6586043575242,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

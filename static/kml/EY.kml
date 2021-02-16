@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>EY</name>
+      <Placemark>
+        <name>EY</name>
+        <address>0</address>
+        <description>3.4ac</description>
+        <styleUrl>#Polygon53</styleUrl>
+        <Style id="Polygon53">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-158.036148855465,21.3651910606209,0 -158.036125469955,21.365815344769,0 -158.034127056601,21.3660674724164,0 -158.034072658049,21.3659571665707,0 -158.034096127378,21.365770166311,0 -158.034259071576,21.3654764644238,0 -158.036148855465,21.3651910606209,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

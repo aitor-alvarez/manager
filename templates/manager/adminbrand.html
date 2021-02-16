@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+ <section class="content-header">
+      <h1>
+        Brand Administration
+      </h1>
+      <p><a class="btn btn-danger" href="/new/brand">New Brand</a></p>
+    </section>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <div class="table-responsive">
+              <table id="data" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>EPA #</th>
+                  <th>Active Ingredient</th>
+                  <th>Type</th>
+                  <th>Pests</th>
+                  <th>Action</th>
+                  <th>Delete</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                	{% for brand in object_list %}
+         			<tr>
+         				
+         				<td>{{ brand.name }}</td>
+                <td>{{ brand.epa_number }}</td>
+                <td> {{ brand.active_ingredient }} </td>
+                <td> {{ brand.rup_omri }}</td>
+                <td>{% for pest in brand.pests.all %} {{ pest }}, {% endfor %}</td>
+         				<td><a href="/brand/{{ brand.id }}">Edit</a></td>
+                <td><a href="/delete_brand/{{ brand.id }}">Delete</a></td>
+         			</tr>
+         			{% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+          </div>
+          </div>
+          
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+ <section class="content-header">
+      <h1>
+        Lot Administration
+      </h1>
+      <p><a class="btn btn-danger" href="/new/lot">New Lot</a></p>
+    </section>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Lot Name</th>
+                  <th>Rotation #</th>
+                  <th>Current Crop Type</th>
+                  <th>Acres</th>
+                    <th>Tax Code</th>
+                    <th>County</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                	{% for lot in object_list %}
+         			<tr>
+         				
+         				<td>{{ lot.lot_name }}</td>
+         				<td>{{ lot.rotation }}</td>
+         				<td>{{ lot.crop }}</td>
+                        <td>{{ lot.acres }}</td>
+                        <td>{{ lot.tax_code }}</td>
+                        <td>{{ lot.county }}</td>
+         				<td><a href="/lot/{{ lot.id }}">Edit</a></td>
+         			</tr>
+         			{% endfor %}
+                </tbody>
+              </table>
+          </div>
+          </div>
+          </div>
+          </div>
+          
+
+{% endblock %}

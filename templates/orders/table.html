@@ -1,0 +1,74 @@
+<script>
+    var theproducts = {{ productsjson|safe }};
+    $("#selectall").on("click", updateTable);
+    
+
+</script>
+<div class="box">
+<div class= "form-group">
+    <h3 id = "printnoshow" >Select:</h3>
+<select id = "palletteselect" multiple class="form-group">
+        {% for pallette in allpallettes %}
+            <option value="{{pallette}}" selected>{{pallette}}</option>
+        {% endfor %}
+</select>
+
+<select id = "catselect" multiple class="form-group">
+        {% for category in allcategories %}
+            <option value="{{category}}" selected>{{category}}</option>
+        {% endfor %}
+</select>
+<div id="selectall" class="btn btn-xs text-success icon-btn btn-danger" href="#">Select All</div>
+<div class="table-responsive">
+        <table id="ordertable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td id="customercount">Customers: {{ customers|length }}</td>
+                    {% for product in products %}
+                    <td>{{ product.code }}</td>
+                    {% endfor %}
+                    <td>Notes</td>
+                    <td>PO</td>
+                    <td>*Checksum</td>
+               </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                <tr customer="{{customer.id}}" class="{{customer.pallette}}" >
+                    <td style="background:{{customer.pallette}}"><p class="customer">{{ customer.name }}</p></td>
+                    {% for column in customer.columns %}
+                    <td class="order">{% for order in column %}<p id="{{order.id}}" product="{{ order.product }}" quantity="{{ order.quantity }}" key="{{ order.key }}" recurring="{{ order.recurring }}" class="{% if order.new %}new order {{ order.product.category }} {% endif %}"class="{{ order.product.category }}">{{order}}</p>{% endfor %}</td>
+                    {% endfor %}
+                    <td class="note"><p class="note">{{ customer.note }}</p></td>
+                    <td class="PO"><p class="PO">{{ customer.PO }}</p></td>
+                    <td>{{ customer.checksum }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+
+<div class="table-responsive">
+        <table id="totalstable" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td></td>
+                    {% for product in products %}
+                    <td>{{ product.code }}</td>
+                    {% endfor %}
+                    <td>Checksum</td>
+               </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Totals</td>
+                    {% for product in products %}
+                    <td id="{{ product.code }}">{% for key, quantity in product.totals.iteritems %}<p>{{ quantity }}{{ key }}</p>{% endfor %}</td>
+                    {% endfor %}
+                    <td id="totaloftotals">{{ totaloftotals }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

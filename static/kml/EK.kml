@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>EK</name>
+      <Placemark>
+        <name>EK</name>
+        <address>0</address>
+        <description>1.4ac</description>
+        <styleUrl>#Polygon71</styleUrl>
+        <Style id="Polygon71">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-158.033756995576,21.3578395448063,0 -158.033598829063,21.3577208570574,0 -158.033488020303,21.3575001615468,0 -158.033583657818,21.3573201182667,0 -158.034151531758,21.3570479578707,0 -158.034521173688,21.3576180949245,0 -158.034519832584,21.3576859883402,0 -158.033756995576,21.3578395448063,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

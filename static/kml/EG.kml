@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>EG</name>
+      <Placemark>
+        <name>EG</name>
+        <address>0</address>
+        <description>2.3ac</description>
+        <styleUrl>#Polygon69</styleUrl>
+        <Style id="Polygon69">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-158.035354753959,21.3595312643233,0 -158.034946000002,21.3596399995712,0 -158.034793000002,21.3596739995712,0 -158.034692000002,21.3596929995712,0 -158.034608808978,21.3597164805549,0 -158.03448814899,21.3597413986359,0 -158.034385220221,21.359760208277,0 -158.034109286966,21.359810633156,0 -158.034049021082,21.3597940369877,0 -158.033980121838,21.359469489697,0 -158.034246000002,21.3591179995712,0 -158.034332000002,21.3591019995712,0 -158.034379000002,21.3590909995712,0 -158.034452000002,21.3590759995712,0 -158.034504000002,21.3590679995712,0 -158.034584000002,21.3590479995712,0 -158.035038000002,21.3589289995712,0 -158.035075000002,21.3589199995712,0 -158.035160629081,21.3588983468149,0 -158.035181667658,21.358922570515,0 -158.035254224946,21.3591133044808,0 -158.035360872748,21.3594798832569,0 -158.035354753959,21.3595312643233,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

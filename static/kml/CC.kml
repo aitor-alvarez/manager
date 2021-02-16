@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>CC</name>
+      <Placemark>
+        <name>CC</name>
+        <address>0</address>
+        <description>0.7ac</description>
+        <styleUrl>#Polygon80</styleUrl>
+        <Style id="Polygon80">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-158.033816423269,21.3665621723416,0 -158.033666219565,21.3665529522481,0 -158.033596565949,21.3665045886668,0 -158.03375925869,21.3659673924925,0 -158.033849699425,21.3658870938602,0 -158.033950282263,21.365524492729,0 -158.034028569239,21.3653859398696,0 -158.034069724383,21.3654054697039,0 -158.034140719103,21.3655196312252,0 -158.033816423269,21.3665621723416,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

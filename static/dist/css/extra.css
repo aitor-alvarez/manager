@@ -1,0 +1,40 @@
+.new.order {
+    border:red;
+    border-style:dashed;
+}
+
+.ui-dialog.ui-widget {
+    z-index:9000!important;
+}
+
+.ui-autocomplete.ui-front {
+    z-index:9001!important;
+}
+
+@media print {
+
+
+#printdate {
+    display:block!important;
+}
+
+
+#ordertable, #totalstable {
+    width:80%!important;
+    padding:0!important;
+    margin:-10px 0 0 0!important;
+}
+
+#totalstable {
+    margin: 50px 0 0 0!important;
+}
+
+
+#datepicker, .btn, #palletteselect, #selectall, #catselect, #printnoshow{
+    display:none!important;
+}
+
+#main-footer{
+	display:none!important;
+}
+}

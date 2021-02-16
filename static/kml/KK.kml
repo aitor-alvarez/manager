@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>KL</name>
+      <Placemark>
+        <name>KK</name>
+        <address>0</address>
+        <description>0.5ac</description>
+        <styleUrl>#Polygon94</styleUrl>
+        <Style id="Polygon94">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-157.949577600002,21.6720147995673,0 -157.948627700002,21.6719842995674,0 -157.948702100002,21.6719428995673,0 -157.948849700002,21.6718575995673,0 -157.948890600002,21.6718401995673,0 -157.948922300002,21.6718290995674,0 -157.948941100002,21.6718074995674,0 -157.949105400002,21.6717625995674,0 -157.949311400002,21.6717677995674,0 -157.949400300002,21.6717667995674,0 -157.949465600002,21.6717550995674,0 -157.949540500002,21.6719186995674,0 -157.949577600002,21.6720147995673,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

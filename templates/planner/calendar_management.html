@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Sign up</button>
+  </form>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	$.ajax({
+    	data: $(this).serialize(), // get the form data
+    	type: $(this).attr('get'),
+    	dataType: 'json',
+    	url: "calendar/",
+    	success: function(data) {
+        	var html = "<table>"
+        	html += "<td>"+data['sales__sum']+"</td>"
+        	html += "</table>"
+        	$("#result").html(html);
+    }
+});
+}
+</script>
+{% endblock %}

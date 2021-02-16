@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>ET</name>
+      <Placemark>
+        <name>ET</name>
+        <address>0</address>
+        <description>0.8ac</description>
+        <styleUrl>#Polygon77</styleUrl>
+        <Style id="Polygon77">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-158.035601768645,21.3672982710781,0 -158.035203544425,21.3672613907041,0 -158.035124922174,21.3672112669232,0 -158.035133387896,21.3670583810093,0 -158.035189546647,21.3668093546661,0 -158.035800168293,21.3668530243817,0 -158.035897566008,21.3669259469392,0 -158.035727329554,21.3672016277345,0 -158.035601768645,21.3672982710781,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

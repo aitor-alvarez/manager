@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load app_tags %}
+
+{% block content %}
+ <section class="content-header">
+      <h1>
+        Inventory Management
+      </h1>
+    <h3> <a href="/items/search">Search</a></h3>
+      <p><a class="btn btn-danger" href="/items/create">New Item</a></p>
+    </section>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+            <div class="table-responsive">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Group</th>
+                    <th> Description </th>
+                    <th>Action</th>
+                    <th>View item</th>
+                </tr>
+                </thead>
+                <tbody>
+                	{% for item in item_list %}
+                        {% if item.check %}
+
+         			<tr bgcolor="yellow">
+                            {% else %}
+                            <tr>
+                            {% endif %}
+                        <td>{{ item.code }}</td>
+         				<td>{{ item.type }}</td>
+                        <td>{{ item.description }}</td>
+         				<td><a href="/items/edit/{{ item.id }}">Edit</a></td>
+                        <td><a href="/items/view/{{ item.id }}">View</a></td>
+         			</tr>
+         			{% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+          </div>
+          </div>
+          
+
+{% endblock %}

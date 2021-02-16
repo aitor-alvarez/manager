@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<section class="content-header">
+      <h1>
+        Calendar
+      </h1>
+    </section>
+
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+
+              <form action="/planner/calendar" method="POST" id="fields">
+                                {% csrf_token %}
+                <select id="id_field" name="field" >
+                    <option value="" disabled selected> -- select a lot -- </option>
+                        {% for f in fields %}
+                           <option value={{f.id}}>{{f.lot_name}}</option>
+                        {% endfor %}
+                </select>
+                <select id="id_crop" name="crop" >
+                    <option value="" disabled selected> -- select a crop -- </option>
+                        {% for c in crops %}
+                           <option value={{c.id}}>{{c.name}}</option>
+                        {% endfor %}
+                </select>
+                   <input type="submit" value="Load Data"/>
+              </form>
+              <p><a class="btn btn-danger" href="/planner/new/plan">New Plan</a></p>
+              <p><a class="btn btn-success" id="save_changes">Save Changes</a></p>
+          </div>
+        </div>
+      </div>
+</div>
+
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="table-responsive">
+              <svg id="gantt"></svg>
+		      </div>
+        </div>
+      </div>
+</div>
+{% endblock %}
+{% block javascript%}
+    <script src="{% static 'js/frappe-gantt.js' %}"></script>
+    <script src="{% static 'js/moment.min.js' %}"></script>
+    <script src="{% static 'js/snap.svg-min.js' %}"></script>
+    <script type="text/javascript">
+    //Function to determine index of value
+    Array.prototype.getIndexBy = function (name, value) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i][name] == value) {
+            return i;
+        }
+    }
+    return -1;
+}
+//end function
+    function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
+    var tasks = {{ plans|safe }}
+  
+var gantt = new Gantt('#gantt', tasks, {
+
+    on_click: function (task) {
+        window.location = "delete/plan/"+task.id;
+    },
+
+    on_date_change: function(task, start, end) {
+        start_date = start._d.toISOString().slice(0,10);
+        end_date = end._d;
+        var task_index = tasks.getIndexBy("id", task.id)
+        end_date.setDate(end_date.getDate() -1);
+        tasks[task_index].end =  end_date.toISOString().slice(0,10);
+        tasks[task_index].start = start_date;
+    }
+    
+});
+gantt.change_view_mode('Day');
+
+  $('#save_changes').click(function(){
+
+  var jsonText = JSON.stringify(tasks);
+
+  $.ajax({
+      data: "tasks="+jsonText + "&csrfmiddlewaretoken="+ encodeURI(csrftoken), 
+      type: 'POST',
+      url: "/planner/update_parts/",
+      success: function(){
+        $("#gantt").load("#gantt");
+      }
+    });
+});
+</script>
+{% endblock %}

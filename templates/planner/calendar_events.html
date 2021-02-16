@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load fullcalendar_tags %}
+{% load staticfiles %}
+{% block content %}
+
+<section class="content-header">
+      <h1>
+        Calendar
+      </h1>
+    </section>
+
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+
+
+              <form action="/planner/calendar" method="POST" id="fields">
+                                {% csrf_token %}
+                <select id="id_field" name="field" >
+                    <option value="" disabled selected> -- select a lot -- </option>
+                        {% for f in fields %}
+                           <option value={{f.id}}>{{f.lot_name}}</option>
+                        {% endfor %}
+                </select>
+                <select id="id_crop" name="crop" >
+                    <option value="" disabled selected> -- select a crop -- </option>
+                        {% for c in crops %}
+                           <option value={{c.id}}>{{c.name}}</option>
+                        {% endfor %}
+                </select>
+                   <input type="submit" value="Load Data"/>
+              </form>
+          </div>
+        </div>
+      </div>
+</div>
+
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+
+{% calendar %}
+
+		      </div>
+        </div>
+      </div>
+</div>
+
+{% endblock %}
+{% block javascript%}
+{% fullcalendar_css %}        
+        {% fullcalendar_print_css %}        
+        {% fullcalendar_jquery %}
+        {% fullcalendar_jquery_ui %}
+        {% fullcalendar_javascript %}
+        
+        {% calendar_init calendar_config_options %}
+{% endblock %}

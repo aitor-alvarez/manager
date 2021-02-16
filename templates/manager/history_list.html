@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+
+ {% load manager_tags %}
+{% load staticfiles %}
+
+{% block content %} 
+
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <section class="content-header">
+                <h1>History</h1>
+                <a href="/settings"><button class="btn btn-info" href="/settings">Settings</button></a>
+              </section>
+              <section class="content-header">
+                <form action="/advanced_history" method="GET">
+                      <label for="lot">Lot: </label>
+                      <input id="lot" type="text" name="lot" required>
+                      <label for="crop">Crop: </label>
+                      <input id="crop" type="text" name="crop">
+                      <input class="btn btn-info" type="submit" value="Search">
+              </form>
+              </section>
+              <div class="table-responsive">
+              <table id="example" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th {% if 'created' in fields %} hidden{% endif %}>Created</th>
+                  <th {% if 'lot' in fields %} hidden{% endif %}>Lot</th>
+                  <th {% if 'rotation' in fields %} hidden{% endif %}>Rotation</th>
+                  <th {% if 'crop' in fields %} hidden{% endif %}>Crop</th>
+                  <th {% if 'user' in fields %} hidden{% endif %}>User</th>
+                  <th {% if 'activity type' in fields %} hidden{% endif %}>Activity Type</th>
+                  <th {% if 'action' in fields %} hidden{% endif %}>Action</th>
+                  <th {% if 'brand' in fields %} hidden{% endif %}>Brand</th>
+                  <th {% if 'qty.' in fields %} hidden{% endif %}>Qty.</th>
+                  <th {% if 'unit' in fields %} hidden{% endif %}>Unit</th>
+                  <th {% if 'people' in fields %} hidden{% endif %}>People</th>
+                  <th {% if 'epa' in fields %} hidden{% endif %}>EPA #</th>
+                  <th {% if 'active ing' in fields %} hidden{% endif %}>Active Ingr.</th>
+                  <th {% if 'rei' in fields %} hidden{% endif %}>REI</th>
+                  <th {% if 'phi' in fields %} hidden{% endif %}>PHI</th>
+                  <th>Time dif.</th>
+                  <th {% if 'rate' in fields %} hidden{% endif %}>Rate</th>
+                  <th {% if 'pests' in fields %} hidden{% endif %}>Pests</th>
+                  <th {% if 'cost' in fields %} hidden{% endif %}>Cost/Unit</th>
+                  <th {% if 'purchase unit' in fields %} hidden{% endif %}>Purchase Unit</th>
+                  <th {% if 'notes' in fields %} hidden{% endif %}>Notes</th>
+                </tr>
+                </thead>
+                <tbody>
+
+              {% for obj in histories %}
+
+              <tr>
+
+                {% with met=obj|check_class_name %}
+
+                {% if met == 'Method' %}
+
+                <td {% if 'created' in fields %} hidden{% endif %}>{{ obj.created|date:"m/d/y G:i" }}</td>
+                <td {% if 'lot' in fields %} hidden{% endif %}>{{ obj.lot_info }}</td>
+                <td {% if 'rotation' in fields %} hidden{% endif %}> {{ obj.lot_info.rotation}} </td>
+                <td {% if 'crop' in fields %} hidden{% endif %}> {{ obj.lot_info.crop }} </td>
+                <td {% if 'user' in fields %} hidden{% endif %}>{{ obj.created_by }}</td>
+                <td {% if 'activity type' in fields %} hidden{% endif %}>Input Method</td>
+                <td {% if 'action' in fields %} hidden{% endif %}> {{ obj.method_name }} </td>
+                <td {% if 'brand' in fields %} hidden{% endif %}> {{ obj.brand }}</td>
+                <td {% if 'qty.' in fields %} hidden{% endif %}> {{ obj.quantity }} </td>
+                <td {% if 'unit' in fields %} hidden{% endif %}>{{ obj.get_unit_display }}</td>
+                <td {% if 'people' in fields %} hidden{% endif %}>{{ obj.people }}</td>
+                <td {% if 'epa' in fields %} hidden{% endif %}>{{ obj.brand.epa_number }}</td>
+                <td {% if 'active ing' in fields %} hidden{% endif %}>{{ obj.brand.active_ingredient }}</td>
+                <td {% if 'rei' in fields %} hidden{% endif %}></td>
+                <td {% if 'phi' in fields %} hidden{% endif %}></td>
+                <td>{{ obj.time_start_application|subtract:obj.time_end_application }}</td>
+                    <td {% if 'rate' in fields %} hidden{% endif %}></td>
+                <td {% if 'pests' in fields %} hidden{% endif %}>{% for pest in input.brand.pests.all %}{{ pest }}<br>{% endfor %}</td>
+                <td {% if 'cost' in fields %} hidden{% endif %}></td>
+                <td {% if 'purchase unit' in fields %} hidden{% endif %}>{% for unit in units %}{% if unit.brand == input.brand %}{{ unit.value }}<br> {% endif %}{% endfor %}</td>
+                <td {% if 'notes' in fields %} hidden{% endif %}> {{ obj.Notes }} </td>
+
+                {% elif met == 'Propagations' %}
+
+                <td {% if 'created' in fields %} hidden{% endif %}>{{ obj.created|date:"m/d/y G:i" }}</td>
+                <td {% if 'lot' in fields %} hidden{% endif %}>{{ obj.lot }}</td>
+                <td {% if 'rotation' in fields %} hidden{% endif %}> {{ obj.rotation}} </td>
+                <td {% if 'crop' in fields %} hidden{% endif %}> {{ obj.crop }} </td>
+                <td {% if 'user' in fields %} hidden{% endif %}>{{ obj.created_by }}</td>
+                <td {% if 'activity type' in fields %} hidden{% endif %}> Propagation </td>
+                <td {% if 'action' in fields %} hidden{% endif %}> Propagated {{ obj.crop }} </td>
+                <td {% if 'brand' in fields %} hidden{% endif %}></td>
+                <td {% if 'qty.' in fields %} hidden{% endif %}> {{ obj.quantity }} </td>
+                <td {% if 'unit' in fields %} hidden{% endif %}> {{ obj.quantity_unit }} </td>
+                <td {% if 'people' in fields %} hidden{% endif %}>{{ obj.people }}</td>
+                <td {% if 'epa' in fields %} hidden{% endif %}></td>
+                <td {% if 'active ing' in fields %} hidden{% endif %}></td>
+                <td {% if 'rei' in fields %} hidden{% endif %}></td>
+                <td {% if 'phi' in fields %} hidden{% endif %}></td>
+                <td></td>
+                    <td {% if 'rate' in fields %} hidden{% endif %}></td>
+                <td {% if 'pests' in fields %} hidden{% endif %}></td>
+                <td {% if 'cost' in fields %} hidden{% endif %}></td>
+                <td {% if 'purchase unit' in fields %} hidden{% endif %}></td>
+                <td {% if 'notes' in fields %} hidden{% endif %}> {{ obj.Notes }} </td>
+
+                {% elif met == 'Transplanting' %}
+
+                <td {% if 'created' in fields %} hidden{% endif %}>{{ obj.created|date:"m/d/y G:i" }}</td>
+                 <td {% if 'lot' in fields %} hidden{% endif %}>{{ obj.lot }}</td>
+                <td {% if 'rotation' in fields %} hidden{% endif %}>{{ obj.rotation}} </td>
+                <td {% if 'crop' in fields %} hidden{% endif %}> {{ obj.crop }} </td>
+                <td {% if 'user' in fields %} hidden{% endif %}>{{ obj.created_by }}</td>
+                <td {% if 'activity type' in fields %} hidden{% endif %}>Transplanting</td>
+                <td {% if 'action' in fields %} hidden{% endif %}> </td>
+                <td {% if 'brand' in fields %} hidden{% endif %}></td>
+                <td {% if 'qty.' in fields %} hidden{% endif %}>{{ obj.quantity }}</td>
+                <td {% if 'unit' in fields %} hidden{% endif %}></td>
+                <td {% if 'people' in fields %} hidden{% endif %}>{{ obj.people }}</td>
+                <td {% if 'epa' in fields %} hidden{% endif %}></td>
+                <td {% if 'active ing' in fields %} hidden{% endif %}></td>
+                <td {% if 'rei' in fields %} hidden{% endif %}></td>
+                <td {% if 'phi' in fields %} hidden{% endif %}></td>
+                    <td></td>
+                <td {% if 'rate' in fields %} hidden{% endif %}></td>
+                <td {% if 'pests' in fields %} hidden{% endif %}></td>
+                <td {% if 'cost' in fields %} hidden{% endif %}></td>
+                <td {% if 'purchase unit' in fields %} hidden{% endif %}></td>
+                <td {% if 'notes' in fields %} hidden{% endif %}>{{ obj.Notes }} </td> 
+
+                {% elif met == 'Harvest' %}
+
+                <td {% if 'created' in fields %} hidden{% endif %}>{{ obj.created|date:"m/d/y G:i"}}</td>
+                <td {% if 'lot' in fields %} hidden{% endif %}>{{ obj.lot }}</td>
+                <td {% if 'rotation' in fields %} hidden{% endif %}> {{ obj.rotation}} </td>
+                <td {% if 'crop' in fields %} hidden{% endif %}>{{ obj.crop }} </td>
+                <td {% if 'user' in fields %} hidden{% endif %}>{{ obj.created_by }}</td>
+                <td {% if 'activity type' in fields %} hidden{% endif %}>Harvesting</td>
+                <td {% if 'action' in fields %} hidden{% endif %}></td>
+                <td {% if 'brand' in fields %} hidden{% endif %}></td>
+                <td {% if 'qty.' in fields %} hidden{% endif %}> {{ obj.quantity }} </td>
+                <td {% if 'unit' in fields %} hidden{% endif %}></td>
+                <td {% if 'people' in fields %} hidden{% endif %}>{{ obj.people }}</td>
+                <td {% if 'epa' in fields %} hidden{% endif %}></td>
+                <td {% if 'active ing' in fields %} hidden{% endif %}></td>
+                <td {% if 'rei' in fields %} hidden{% endif %}></td>
+                <td {% if 'phi' in fields %} hidden{% endif %}></td>
+               <td></td>
+                <td {% if 'rate' in fields %} hidden{% endif %}></td>
+                <td {% if 'pests' in fields %} hidden{% endif %}></td>
+                <td {% if 'cost' in fields %} hidden{% endif %}></td>
+                <td {% if 'purchase unit' in fields %} hidden{% endif %}></td>
+                <td {% if 'notes' in fields %} hidden{% endif %}>{{ obj.Notes }}</td>
+
+                {% elif met == 'Cleaning' %}
+
+                <td {% if 'created' in fields %} hidden{% endif %}> {{ obj.created|date:"m/d/y G:i" }}</td>
+                <td {% if 'lot' in fields %} hidden{% endif %}>{{ obj.lot }}</td>
+                <td {% if 'rotation' in fields %} hidden{% endif %}> {{ obj.rotation}} </td>
+                <td {% if 'crop' in fields %} hidden{% endif %}> {{ obj.crop }} </td>
+                <td {% if 'user' in fields %} hidden{% endif %}>{{ obj.created_by }}</td>
+                <td {% if 'activity type' in fields %} hidden{% endif %}>Cleaning</td>
+                <td {% if 'action' in fields %} hidden{% endif %}>{{ obj.action }}</td>
+                <td {% if 'brand' in fields %} hidden{% endif %}></td>
+                <td {% if 'qty.' in fields %} hidden{% endif %}></td>
+                <td {% if 'unit' in fields %} hidden{% endif %}></td>
+                <td {% if 'people' in fields %} hidden{% endif %}>{{ obj.people }}</td>
+                <td {% if 'epa' in fields %} hidden{% endif %}></td>
+                <td {% if 'active ing' in fields %} hidden{% endif %}></td>
+                <td {% if 'rei' in fields %} hidden{% endif %}></td>
+                <td {% if 'phi' in fields %} hidden{% endif %}></td>
+                <td></td>
+                    <td {% if 'rate' in fields %} hidden{% endif %}></td>
+                <td {% if 'pests' in fields %} hidden{% endif %}></td>
+                <td {% if 'cost' in fields %} hidden{% endif %}></td>
+                <td {% if 'purchase unit' in fields %} hidden{% endif %}></td>
+                <td {% if 'notes' in fields %} hidden{% endif %}> {{ obj.Notes }} </td>
+                {% endif %}
+                {% endwith %}
+              </tr>
+              {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+          </div>
+          </div>
+  {% if histories.has_other_pages %}
+  <ul class="pagination">
+    {% if histories.has_previous %}
+      <li><a href="?page={{ histories.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in histories.paginator.page_range %}
+      {% if histories.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if histories.has_next %}
+      <li><a href="?page={{ histories.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+{% endblock %}

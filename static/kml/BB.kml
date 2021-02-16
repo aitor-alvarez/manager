@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>BB</name>
+      <Placemark>
+        <name>BB</name>
+        <address>0</address>
+        <description>0.8ac</description>
+        <styleUrl>#Polygon79</styleUrl>
+        <Style id="Polygon79">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-158.034348171207,21.3671052358481,0 -158.033872330564,21.3670512563917,0 -158.033730257305,21.3670051559242,0 -158.033678876238,21.3669565408859,0 -158.03361726925,21.3667699597213,0 -158.033674852925,21.366642554793,0 -158.034373568373,21.3667024854007,0 -158.034367198127,21.3669100213232,0 -158.034348171207,21.3671052358481,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+         
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

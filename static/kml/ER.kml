@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kml>
+  <Document>
+    <Folder>
+      <name>ER</name>
+      <Placemark>
+        <name>ER</name>
+        <address>0</address>
+        <description>2.6ac</description>
+        <styleUrl>#Polygon65</styleUrl>
+        <Style id="Polygon65">
+          <IconStyle id="">
+            <color>FF0000FF</color>
+            <scale>0</scale>
+            <hotSpot x="0" y="0" xunits="pixels" yunits="pixels" />
+          </IconStyle>
+          <LabelStyle id="">
+            <color>FF000000</color>
+            <scale>1</scale>
+          </LabelStyle>
+          <LineStyle id="">
+            <color>FF000000</color>
+            <width>2</width>
+          </LineStyle>
+          <PolyStyle>
+            <color>64D3D3D3</color>
+          </PolyStyle>
+        </Style>
+        <MultiGeometry>
+          <Polygon>
+            <tessellate>1</tessellate>
+            <outerBoundaryIs>
+              <LinearRing id="">
+                <coordinates>-158.034005234509,21.3598829089041,0 -158.035363766849,21.3595861801364,0 -158.035459123907,21.3600909282432,0 -158.035490624609,21.3602670277837,0 -158.035388784485,21.3602902456555,0 -158.035285914599,21.3603111127533,0 -158.035093710435,21.3603464252325,0 -158.034911280767,21.360383491721,0 -158.034747568893,21.3604176505837,0 -158.034650941616,21.3604332616054,0 -158.034424865621,21.3604697860214,0 -158.0341825448,21.3604425448361,0 -158.034099011076,21.3603244342395,0 -158.034057686498,21.3602210322477,0 -158.034028337799,21.3601106646617,0 -158.034022429135,21.3600030505753,0 -158.034005635149,21.3599127908791,0 -158.034005234509,21.3598829089041,0 </coordinates>
+              </LinearRing>
+            </outerBoundaryIs>
+          </Polygon>
+        </MultiGeometry>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

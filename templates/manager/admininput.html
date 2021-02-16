@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+ <section class="content-header">
+      <h1>
+        Input Method Administration
+      </h1>
+      <p><a class="btn btn-danger" href="/new/input">New Input</a></p>
+    </section>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                	{% for input in object_list %}
+         			<tr>
+         				
+         				<td>{{ input.name }}</td>
+         				<td><a href="/input/{{ input.id }}">Edit</a></td>
+         			</tr>
+         			{% endfor %}
+                </tbody>
+              </table>
+          </div>
+          </div>
+          </div>
+          </div>
+          
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load qr_tags %}
+
+{% block content %}
+    <section class="content-header">
+      <h1>
+        Inventory Management
+      </h1>
+      <p><a class="btn btn-danger" href="/items/create">New Item</a><a class="btn btn-info" href="/items/">Return to items</a></p>
+    </section>
+<div class="row" class="hidden-print">
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#details">Item details</a></li>
+  <li><a data-toggle="tab" href="#description">Full description</a></li>
+    <li><a data-toggle="tab" href="#notes">Notes</a></li>
+</ul>
+<div class="col-xs-12">
+<div class="tab-content">
+
+
+<div id="details" class="tab-pane fade in active">
+    <div class="box">
+    <h3 class="hidden-print">{{ item.type }} </h3>
+          <p>ID: {{ item.code }}</p>
+          <p>Make: {{ item.make }}</p>
+          <p>Model: {{ item.model }}</p>
+          <p>Vin/Serial: {{ item.vin_serial }}</p>
+          <p>Location: {{ item.location }}</p>
+    <hr class="hidden-print">
+        </div>
+    </div>
+    <div id="description" class="tab-pane fade">
+<div class="box">
+        <h3 class="hidden-print">{{ item.type }} </h3>
+                        <p><strong>Category:</strong>{{ item.category }}</p>
+         				<p><strong>Type:</strong>{{ item.type }}</p>
+                        <p><strong>Code:</strong>{{ item.code }}</p>
+                        <p><strong>Description:</strong>{{ item.description }}</p>
+         				<p><strong>Location:</strong>{{ item.location }}</p>
+                        <p><strong>License:</strong>{{ item.license }}</p>
+                        <p><strong>Plate:</strong>{{ item.plate }}</p>
+                        <p><strong>Make:</strong>{{ item.make }}</p>
+                        <p><strong>Model:</strong>{{ item.model }}</p>
+                        <p><strong>Serial:</strong>{{ item.vin_serial }}</p>
+                        <p><strong>Year:</strong>{{ item.year }}</p>
+                        <p><strong>Insurance expires:</strong>{{ item.insurance_expires }}</p>
+                        <p><strong>Insurance:</strong>{{ item.insurance }}</p>
+                        <p><strong>Safety expires:</strong>{{ item.safety_expires }}</p>
+                        <p><strong>Registration expires:</strong>{{ item.registration_expires }}</p>
+                        <p><strong>Registration amount:</strong>{{ item.registration_amount }}</p>
+                        <p><strong>Tire front:</strong>{{ item.tire_front }}</p>
+                        <p><strong>Tire back:</strong>{{ item.tire_back }}</p>
+                        <p><strong>Tare:</strong>{{ item.tare }}</p>
+                        <p><strong>Next check:</strong>{{ item.next_check_in_days }}</p>
+
+    <hr class="hidden-print">
+</div>
+
+         </div>
+    <div id="notes" class="tab-pane fade">
+        <div class="box">
+             <h3 class="hidden-print">{{ item.type }} </h3>
+                        <p><strong>Notes:</strong>{{ item.notes }}</p>
+          </div>
+    </div>
+    <div class="hidden-print">
+        <button><a id="print_button" href="#" class="button button-primary">Print QR</a></button>
+            </div>
+            <div class="row">
+            <div id="print_this" style="width: 4in;height: 5.5in;" hidden>
+
+                            <div class="col-xs-12">
+                            <h3 style = "position:relative; left:50px;">{{ item.code }}</h3>
+                                {% with fullurl=request.META.HTTP_HOST %}
+                                {% qr_from_object item %}
+                                {% endwith %}
+                            </div>
+                    </div>
+                    </div>
+
+            </div>
+          <div class="col-xs-12">
+          <div class="box">
+
+          {% include "inventory/services.html" %}
+              </div>
+        </div>
+          </div>
+        </div>
+</div>
+
+
+{% endblock %}
+{% block javascript %}
+    <script src="{% static 'js/printThis.js' %}"></script>
+
+    <script  type="text/javascript">
+    $(document).ready(function() {
+        $('#print_button').on("click", function () {
+            $('#print_this').show(500)
+            $('#print_this').printThis({importStyle: true});
+        });
+    });
+
+
+
+    </script>
+{% endblock %}

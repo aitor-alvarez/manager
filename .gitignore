@@ -1,0 +1,13 @@
+db.sqlite3
+*.json
+migrations/
+venv/
+media/
+settings.py
+.idea/
+utils/
+api/
+scale/
+*.pyc
+.DS_Store
+settings.py

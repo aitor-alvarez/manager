@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+ <section class="content-header">
+      <h1>
+        Plans
+      </h1>
+    </section>
+<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>From</th>
+                  <th>To</th>
+                </tr>
+                </thead>
+                <tbody>
+                  {% for p in parts %}
+              <tr>
+                <td>{{ p.get_plan_type_display  }}</td>
+                <td>{{ p.begin }}</td>
+                <td>{{ p.end }}</a></td>
+              </tr>
+              {% endfor %}
+                </tbody>
+              </table>
+          </div>
+          </div>
+          </div>
+          </div>
+          
+
+{% endblock %}
