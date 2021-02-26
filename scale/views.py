@@ -17,9 +17,9 @@ def create_harvest_record():
 	records = read_scale_csv()
 	entries=[]
 	harvests=[]
-	error=''
 
 	for record in records:
+		error = ''
 		if ScaleRecords.objects.filter(sheet_id=record['sheet_id'], time_stamp=record['timestamp']).exists():
 			continue
 		else:
@@ -29,7 +29,7 @@ def create_harvest_record():
 			except:
 				lot = None
 				crop = None
-				error+="lot and crop not in database: "+record['lot']+' \n'
+				error+="lot not in database: "+record['lot']+' \n'
 			try:
 				userid= RemoteUser.objects.get(remote_user_code=record['employee'])
 			except:
