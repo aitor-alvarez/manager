@@ -6,6 +6,7 @@ import settings
 from manager.views import *
 from django.contrib.auth.decorators import login_required
 from filebrowser.sites import site
+from scale.views import create_harvest_record, read_records
 
 
 
@@ -85,8 +86,8 @@ urlpatterns = [
 
     url(r'^items/', include('inventory.urls')),
 
-    #API URLs
+    #Scale URLs
 
-   # url(r'^api/', include('api.urls')),
+   url(r'^scale/',  read_records),
 
     ] + static(settings.STATIC_URL, document_root = settings.STATICFILES_DIRS)
