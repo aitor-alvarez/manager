@@ -26,9 +26,11 @@ def create_harvest_record():
 			try:
 				lot = Lot.objects.get(lot_name=record['lot'])
 				crop = lot.crop
+				rotation = lot.rotation
 			except:
 				lot = None
 				crop = None
+				rotation = None
 				error+="lot not in database: "+record['lot']+' \n'
 			try:
 				userid= RemoteUser.objects.get(remote_user_code=record['employee'])
@@ -40,7 +42,10 @@ def create_harvest_record():
 			                            time_stamp=record['timestamp'], user=userid,
 			                            lot=lot, crop=crop, error_log=error))
 
+			harvests.append(Harvest(lot=lot, rotation=rotation, quantity=int(round(record['weight'])), created_by=userid))
+
 	ScaleRecords.objects.bulk_create(entries)
+	Harvest.objects.bulk_create(harvests)
 
 
 
