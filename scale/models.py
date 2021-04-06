@@ -10,7 +10,7 @@ class RemoteUser(models.Model):
 	remote_user_code = models.CharField(max_length=155)
 
 	def __str__(self):
-		return str(self.user.username)
+		return str(self.remote_user_code)
 
 class ScaleRecords(models.Model):
 	sheet_id = models.CharField(max_length=155, null=False, blank=False, unique=False)

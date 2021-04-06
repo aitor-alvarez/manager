@@ -33,7 +33,7 @@ def create_harvest_record():
 				rotation = None
 				error+="lot not in database: "+record['lot']+' \n'
 			try:
-				userid= RemoteUser.objects.get(remote_user_code=record['employee'])
+				userid= RemoteUser.objects.get(remote_user_code=record['employee'][2:-2])
 			except:
 				userid = None
 				error += 'User not in database:'+ record['employee']+' \n'
